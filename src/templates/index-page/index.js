@@ -126,16 +126,14 @@ export const IndexPageTemplate = ({
   const videoRef = useRef(null)
 
   const hasVideo = require(`../../../static/img/${
-    geoCountry === 'New Zealand'
+    geoCountry === 'NZL'
       ? videoName
-      : geoCountry === 'Australia'
+      : geoCountry === 'AUS'
       ? videoNameAU
-      : geoCountry === 'United States'
+      : geoCountry === 'USA'
       ? videoNameUS
-      : geoCountry === 'China'
+      : geoCountry === 'CHN'
       ? videoNameCN
-      : geoCountry === 'Not specified'
-      ? videoName
       : videoName
   }`)
 
@@ -601,11 +599,19 @@ class IndexPage extends React.Component {
       this.setState({loading: false})
     }, 1000)
 
-    // Geo location checker - Used for swapping homepage header video
-    fetch('/locale.json')
+    // Geo location checker - Used for swapping homepage header video - NEW
+    fetch('https://api.ipgeolocationapi.com/geolocate')
       .then(response => response.json())
-      .then(data => this.setState({geoCountry: data.locale}))
-      .catch(err => console.error('Error fetching data from /locale.json endpoint', err))
+      .then(data => this.setState({geoCountry: data.address_format.alpha3}))
+      .then(data => console.log("geo data ", data))
+      .catch(err => console.log("Error with Geo Location request", err))
+
+
+    // Geo location checker - Used for swapping homepage header video - OLD
+    // fetch('/locale.json')
+    //   .then(response => response.json())
+    //   .then(data => this.setState({geoCountry: data.locale}))
+    //   .catch(err => console.error('Error fetching data from /locale.json endpoint', err))
   }
 
   componentWillUnmount() {
