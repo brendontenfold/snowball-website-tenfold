@@ -563,7 +563,7 @@ export const IndexPageTemplate = ({
           image={downloadNow.image}
         />
       </div>
-      <div
+      {/* <div
         key={`body`}
         id="___gatsby"
         dangerouslySetInnerHTML={{ __html: `
@@ -575,7 +575,7 @@ export const IndexPageTemplate = ({
             })(document,'script','style','head');
           </script>`
         }}
-      />
+      /> */}
     </PageTransition>
   )
 }
