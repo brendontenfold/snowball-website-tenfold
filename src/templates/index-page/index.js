@@ -635,10 +635,10 @@ class IndexPage extends React.Component {
     }, 1000)
 
     // Geo location checker - Used for swapping homepage header video - NEW
-    fetch('https://api.ipgeolocationapi.com/geolocate')
+    fetch('https://cors-anywhere.herokuapp.com/https://api.ipgeolocationapi.com/geolocate')
       .then(response => response.json())
       .then(data => this.setState({geoCountry: data.address_format.alpha3}))
-      .then(data => console.log("geo data ", data))
+      // .then(data => console.log("geo data ", data))
       .catch(err => console.log("Error with Geo Location request", err))
 
 
