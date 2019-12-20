@@ -144,8 +144,43 @@ export const IndexPageTemplate = ({
         <Jumbotron className="full-width-image-container d-flex justify-content-center align-items-center flex-column text-right">
           <ImageContainer>
 
+          <StyledVideo
+              id="mainVideo"
+              loop
+              width="100%"
+              muted="true"
+              preload="auto"
+              // src={require(`../../../static/img/${videoName}`)}
+              src={require(`../../../static/img/${
+                geoCountry === 'NZL'
+                  ? videoName
+                  : geoCountry === 'AUS'
+                  ? videoNameAU
+                  : geoCountry === 'USA'
+                  ? videoNameUS
+                  : geoCountry === 'CHN'
+                  ? videoNameCN
+                  : videoName
+              }`)}
+              autoplay
+              className="video"
+              poster={
+                geoCountry === 'NZL'
+                  ? videoPosterSailing
+                  : geoCountry === 'AUS'
+                  ? videoPosterBeach
+                  : geoCountry === 'USA'
+                  ? videoPosterBoat
+                  : geoCountry === 'CHN'
+                  ? videoPosterChina
+                  : videoPosterSailing
+              }
+            >
+              <track kind="captions" />
+            </StyledVideo>
+
             {/* temporary manual adding of NZ video while geo location is getting fixed */}
-            <StyledVideo
+            {/* <StyledVideo
               id="mainVideo"
               loop
               width="100%"
@@ -157,10 +192,10 @@ export const IndexPageTemplate = ({
               poster={ videoPosterSailing }
             >
               <track kind="captions" />
-            </StyledVideo> 
+            </StyledVideo>  */}
 
             {/* New Zealand Geo Content */}
-            <span className='geotargetlygeocontent1576795005016_content_1'>
+            {/* <span className='geotargetlygeocontent1576795005016_content_1'>
               <StyledVideo
                 id="mainVideo"
                 loop
@@ -174,10 +209,10 @@ export const IndexPageTemplate = ({
               >
                 <track kind="captions" />
               </StyledVideo>          
-            </span>
+            </span> */}
 
             {/* Australia Geo Content */}
-            <span className='geotargetlygeocontent1576795005016_content_2'>
+            {/* <span className='geotargetlygeocontent1576795005016_content_2'>
               <StyledVideo
                 id="mainVideo"
                 loop
@@ -191,10 +226,10 @@ export const IndexPageTemplate = ({
               >
                 <track kind="captions" />
               </StyledVideo>
-            </span>
+            </span> */}
 
             {/* USA & Canada Geo Content */}
-            <span className='geotargetlygeocontent1576795005016_content_3'>
+            {/* <span className='geotargetlygeocontent1576795005016_content_3'>
               <StyledVideo
                 id="mainVideo"
                 loop
@@ -208,10 +243,10 @@ export const IndexPageTemplate = ({
               >
                 <track kind="captions" />
               </StyledVideo>
-            </span>
+            </span> */}
 
             {/* China, Taiwan, Hong Kong Geo Content */}
-            <span className='geotargetlygeocontent1576795005016_content_4'>
+            {/* <span className='geotargetlygeocontent1576795005016_content_4'>
               <StyledVideo
                 id="mainVideo"
                 loop
@@ -225,10 +260,10 @@ export const IndexPageTemplate = ({
               >
                 <track kind="captions" />
               </StyledVideo>
-            </span>
+            </span> */}
 
             {/* Default Geo Content */}
-            <span className='geotargetlygeocontent1576795005016_default'>
+            {/* <span className='geotargetlygeocontent1576795005016_default'>
               <StyledVideo
                 id="mainVideo"
                 loop
@@ -242,7 +277,7 @@ export const IndexPageTemplate = ({
               >
                 <track kind="captions" />
               </StyledVideo>
-            </span>
+            </span> */}
 
             <Overlay />
           </ImageContainer>
