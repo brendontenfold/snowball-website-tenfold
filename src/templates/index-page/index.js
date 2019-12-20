@@ -146,6 +146,21 @@ export const IndexPageTemplate = ({
         <Jumbotron className="full-width-image-container d-flex justify-content-center align-items-center flex-column text-right">
           <ImageContainer>
 
+            {/* temporary manual adding of NZ video while geo location is getting fixed */}
+            <StyledVideo
+              id="mainVideo"
+              loop
+              width="100%"
+              muted="true"
+              preload="auto"
+              src={require(`../../../static/img/sailing.mp4`)}
+              autoplay
+              className="video"
+              poster={ videoPosterSailing }
+            >
+              <track kind="captions" />
+            </StyledVideo> 
+
             {/* New Zealand Geo Content */}
             <span className='geotargetlygeocontent1576795005016_content_1'>
               <StyledVideo
@@ -563,19 +578,6 @@ export const IndexPageTemplate = ({
           image={downloadNow.image}
         />
       </div>
-      {/* <div
-        key={`body`}
-        id="___gatsby"
-        dangerouslySetInnerHTML={{ __html: `
-          <script>
-            (function(g,e,o,t,l,y){
-            var l=g.getElementsByTagName(e)[0],y=g.createElement(e); y.async=true;
-            y.src='//geo-targetly.com/geocontent?id=-LwVI_y1Pd76sqACFNmC&refurl='+g.referrer+'&winurl='+encodeURIComponent(window.location);
-            l.parentNode.insertBefore(y,l);
-            })(document,'script','style','head');
-          </script>`
-        }}
-      /> */}
     </PageTransition>
   )
 }
