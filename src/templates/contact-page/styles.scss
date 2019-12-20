@@ -51,4 +51,8 @@ $primary: #006fbb;
         font-weight: 500;
     }
 
+    .hidden-custom {
+        position: absolute; 
+        visibility: hidden;
+    }
 }

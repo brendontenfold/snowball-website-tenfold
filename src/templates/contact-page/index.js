@@ -322,15 +322,21 @@ export function ContactPageTemplate(props: Props) {
                 </div>
               </div>
               <form
-                action="/thank-you"
+                // action="/thank-you"
                 name="contact-form"
                 method="post"
-                data-netlify="true"
-                data-netlify-honeypot="bot-field"
+                action="https://app.99inbound.com/api/e/IaTy227T" 
+                method="POST" 
+                target="_blank"
+                // data-netlify="true"
+                // data-netlify-honeypot="bot-field"
                 className="col-md-7 col-11"
               >
-                <input type="hidden" name="bot-field" />
-                <input type="hidden" name="form-name" value="contact-form" />
+              <div className="hidden-custom">
+                <input type="checkbox" name="conservative_turquoise_polka_dotted_rhino" value="1" tabindex="-1" autocomplete="no"/>
+              </div>
+                {/* <input type="hidden" name="bot-field" />
+                <input type="hidden" name="form-name" value="contact-form" /> */}
                 <h3 className="mb-3">Leave a message</h3>
                 <div className="row mb-2">
                   <div className="col-md-6">

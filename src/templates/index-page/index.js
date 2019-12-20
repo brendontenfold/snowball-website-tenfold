@@ -145,44 +145,92 @@ export const IndexPageTemplate = ({
       {hasVideo && (
         <Jumbotron className="full-width-image-container d-flex justify-content-center align-items-center flex-column text-right">
           <ImageContainer>
-            <StyledVideo
-              id="mainVideo"
-              loop
-              width="100%"
-              muted="true"
-              preload="auto"
-              // src={require(`../../../static/img/${videoName}`)}
-              src={require(`../../../static/img/${
-                geoCountry === 'New Zealand'
-                  ? videoName
-                  : geoCountry === 'Australia'
-                  ? videoNameAU
-                  : geoCountry === 'United States'
-                  ? videoNameUS
-                  : geoCountry === 'China'
-                  ? videoNameCN
-                  : geoCountry === 'Not specified'
-                  ? videoName
-                  : videoName
-              }`)}
-              autoplay
-              className="video"
-              poster={
-                geoCountry === 'New Zealand'
-                  ? videoPosterSailing
-                  : geoCountry === 'Australia'
-                  ? videoPosterBeach
-                  : geoCountry === 'United States'
-                  ? videoPosterBoat
-                  : geoCountry === 'China'
-                  ? videoPosterChina
-                  : geoCountry === 'Not specified'
-                  ? videoPosterSailing
-                  : videoPosterSailing
-              }
-            >
-              <track kind="captions" />
-            </StyledVideo>
+
+            {/* New Zealand Geo Content */}
+            <span className='geotargetlygeocontent1576795005016_content_1'>
+              <StyledVideo
+                id="mainVideo"
+                loop
+                width="100%"
+                muted="true"
+                preload="auto"
+                src={require(`../../../static/img/sailing.mp4`)}
+                autoplay
+                className="video"
+                poster={ videoPosterSailing }
+              >
+                <track kind="captions" />
+              </StyledVideo>          
+            </span>
+
+            {/* Australia Geo Content */}
+            <span className='geotargetlygeocontent1576795005016_content_2'>
+              <StyledVideo
+                id="mainVideo"
+                loop
+                width="100%"
+                muted="true"
+                preload="auto"
+                src={require(`../../../static/img/Beach-Final-compressed.mp4`)}
+                autoplay
+                className="video"
+                poster={ videoPosterBeach }
+              >
+                <track kind="captions" />
+              </StyledVideo>
+            </span>
+
+            {/* USA & Canada Geo Content */}
+            <span className='geotargetlygeocontent1576795005016_content_3'>
+              <StyledVideo
+                id="mainVideo"
+                loop
+                width="100%"
+                muted="true"
+                preload="auto"
+                src={require(`../../../static/img/Boat-Final-compressed.mp4`)}
+                autoplay
+                className="video"
+                poster={ videoPosterBoat }
+              >
+                <track kind="captions" />
+              </StyledVideo>
+            </span>
+
+            {/* China, Taiwan, Hong Kong Geo Content */}
+            <span className='geotargetlygeocontent1576795005016_content_4'>
+              <StyledVideo
+                id="mainVideo"
+                loop
+                width="100%"
+                muted="true"
+                preload="auto"
+                src={require(`../../../static/img/China-Wall-compressed.mp4`)}
+                autoplay
+                className="video"
+                poster={ videoPosterChina }
+              >
+                <track kind="captions" />
+              </StyledVideo>
+            </span>
+
+            {/* Default Geo Content */}
+            <span className='geotargetlygeocontent1576795005016_default'>
+              <StyledVideo
+                id="mainVideo"
+                loop
+                width="100%"
+                muted="true"
+                preload="auto"
+                src={require(`../../../static/img/sailing.mp4`)}
+                autoplay
+                className="video"
+                poster={ videoPosterSailing }
+              >
+                <track kind="captions" />
+              </StyledVideo>
+            </span>
+
             <Overlay />
           </ImageContainer>
           <div className="text-center mb-5 pb-5">
@@ -515,6 +563,19 @@ export const IndexPageTemplate = ({
           image={downloadNow.image}
         />
       </div>
+      <div
+        key={`body`}
+        id="___gatsby"
+        dangerouslySetInnerHTML={{ __html: `
+          <script>
+            (function(g,e,o,t,l,y){
+            var l=g.getElementsByTagName(e)[0],y=g.createElement(e); y.async=true;
+            y.src='//geo-targetly.com/geocontent?id=-LwVI_y1Pd76sqACFNmC&refurl='+g.referrer+'&winurl='+encodeURIComponent(window.location);
+            l.parentNode.insertBefore(y,l);
+            })(document,'script','style','head');
+          </script>`
+        }}
+      />
     </PageTransition>
   )
 }
