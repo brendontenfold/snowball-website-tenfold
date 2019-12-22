@@ -126,14 +126,16 @@ export const IndexPageTemplate = ({
   const videoRef = useRef(null)
 
   const hasVideo = require(`../../../static/img/${
-    geoCountry === 'NZL'
+    geoCountry === 'New Zealand'
       ? videoName
-      : geoCountry === 'AUS'
+      : geoCountry === 'Australia'
       ? videoNameAU
-      : geoCountry === 'USA'
+      : geoCountry === 'United States'
       ? videoNameUS
-      : geoCountry === 'CHN'
+      : geoCountry === 'China'
       ? videoNameCN
+      : geoCountry === 'Not specified'
+      ? videoName
       : videoName
   }`)
 
@@ -152,133 +154,36 @@ export const IndexPageTemplate = ({
               preload="auto"
               // src={require(`../../../static/img/${videoName}`)}
               src={require(`../../../static/img/${
-                geoCountry === 'NZL'
+                geoCountry === 'New Zealand'
                   ? videoName
-                  : geoCountry === 'AUS'
+                  : geoCountry === 'Australia'
                   ? videoNameAU
-                  : geoCountry === 'USA'
+                  : geoCountry === 'United States'
                   ? videoNameUS
-                  : geoCountry === 'CHN'
+                  : geoCountry === 'China'
                   ? videoNameCN
+                  : geoCountry === 'Not specified'
+                  ? videoName
                   : videoName
               }`)}
               autoplay
               className="video"
               poster={
-                geoCountry === 'NZL'
+                geoCountry === 'New Zealand'
                   ? videoPosterSailing
-                  : geoCountry === 'AUS'
+                  : geoCountry === 'Australia'
                   ? videoPosterBeach
-                  : geoCountry === 'USA'
+                  : geoCountry === 'United States'
                   ? videoPosterBoat
-                  : geoCountry === 'CHN'
+                  : geoCountry === 'China'
                   ? videoPosterChina
+                  : geoCountry === 'Not specified'
+                  ? videoPosterSailing
                   : videoPosterSailing
               }
             >
               <track kind="captions" />
             </StyledVideo>
-
-            {/* temporary manual adding of NZ video while geo location is getting fixed */}
-            {/* <StyledVideo
-              id="mainVideo"
-              loop
-              width="100%"
-              muted="true"
-              preload="auto"
-              src={require(`../../../static/img/sailing.mp4`)}
-              autoplay
-              className="video"
-              poster={ videoPosterSailing }
-            >
-              <track kind="captions" />
-            </StyledVideo>  */}
-
-            {/* New Zealand Geo Content */}
-            {/* <span className='geotargetlygeocontent1576795005016_content_1'>
-              <StyledVideo
-                id="mainVideo"
-                loop
-                width="100%"
-                muted="true"
-                preload="auto"
-                src={require(`../../../static/img/sailing.mp4`)}
-                autoplay
-                className="video"
-                poster={ videoPosterSailing }
-              >
-                <track kind="captions" />
-              </StyledVideo>          
-            </span> */}
-
-            {/* Australia Geo Content */}
-            {/* <span className='geotargetlygeocontent1576795005016_content_2'>
-              <StyledVideo
-                id="mainVideo"
-                loop
-                width="100%"
-                muted="true"
-                preload="auto"
-                src={require(`../../../static/img/Beach-Final-compressed.mp4`)}
-                autoplay
-                className="video"
-                poster={ videoPosterBeach }
-              >
-                <track kind="captions" />
-              </StyledVideo>
-            </span> */}
-
-            {/* USA & Canada Geo Content */}
-            {/* <span className='geotargetlygeocontent1576795005016_content_3'>
-              <StyledVideo
-                id="mainVideo"
-                loop
-                width="100%"
-                muted="true"
-                preload="auto"
-                src={require(`../../../static/img/Boat-Final-compressed.mp4`)}
-                autoplay
-                className="video"
-                poster={ videoPosterBoat }
-              >
-                <track kind="captions" />
-              </StyledVideo>
-            </span> */}
-
-            {/* China, Taiwan, Hong Kong Geo Content */}
-            {/* <span className='geotargetlygeocontent1576795005016_content_4'>
-              <StyledVideo
-                id="mainVideo"
-                loop
-                width="100%"
-                muted="true"
-                preload="auto"
-                src={require(`../../../static/img/China-Wall-compressed.mp4`)}
-                autoplay
-                className="video"
-                poster={ videoPosterChina }
-              >
-                <track kind="captions" />
-              </StyledVideo>
-            </span> */}
-
-            {/* Default Geo Content */}
-            {/* <span className='geotargetlygeocontent1576795005016_default'>
-              <StyledVideo
-                id="mainVideo"
-                loop
-                width="100%"
-                muted="true"
-                preload="auto"
-                src={require(`../../../static/img/sailing.mp4`)}
-                autoplay
-                className="video"
-                poster={ videoPosterSailing }
-              >
-                <track kind="captions" />
-              </StyledVideo>
-            </span> */}
-
             <Overlay />
           </ImageContainer>
           <div className="text-center mb-5 pb-5">
@@ -634,19 +539,11 @@ class IndexPage extends React.Component {
       this.setState({loading: false})
     }, 1000)
 
-    // Geo location checker - Used for swapping homepage header video - NEW
-    fetch('https://api.ipgeolocationapi.com/geolocate')
-      .then(response => response.json())
-      .then(data => this.setState({geoCountry: data.address_format.alpha3}))
-      .then(data => console.log("geo data ", data))
-      .catch(err => console.log("Error with Geo Location request", err))
-
-
-    // Geo location checker - Used for swapping homepage header video - OLD
-    // fetch('/locale.json')
-    //   .then(response => response.json())
-    //   .then(data => this.setState({geoCountry: data.locale}))
-    //   .catch(err => console.error('Error fetching data from /locale.json endpoint', err))
+    // Geo location checker - Used for swapping homepage header video
+     fetch('/locale.json')
+       .then(response => response.json())
+       .then(data => this.setState({geoCountry: data.locale}))
+       .catch(err => console.error('Error fetching data from /locale.json endpoint', err))
   }
 
   componentWillUnmount() {
