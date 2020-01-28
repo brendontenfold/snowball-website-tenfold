@@ -1,1 +1,2 @@
-import './src/components/global.scss'
+import './src/components/bootstrap.min.scss';
+import './src/components/global.scss';

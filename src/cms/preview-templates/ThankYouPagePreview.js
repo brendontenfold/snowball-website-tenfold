@@ -25,4 +25,4 @@ ThankYouPagePreview.propTypes = {
   widgetFor: PropTypes.func,
 }
 
-export default TermsPagePreview
+export default ThankYouPagePreview
