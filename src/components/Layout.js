@@ -4,7 +4,7 @@ import {withPrefix} from 'gatsby'
 import styled from 'styled-components'
 
 import Footer from './Footer'
-import './global.scss'
+// import './global.scss'
 import useSiteMetadata from './SiteMetadata'
 import Header from './Header'
 
